@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: lwa4p_pg70
+    relative_path: urdf/lwa4p_pg70.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/lwa4p_pg70.srdf
+  CONFIG:
+    author_name: Kautilya Reddy
+    author_email: kautilya97@gmail.com
+    generated_timestamp: 1672487461
