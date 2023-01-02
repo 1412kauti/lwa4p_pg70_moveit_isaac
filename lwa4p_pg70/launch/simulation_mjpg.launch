@@ -1,0 +1,20 @@
+<launch>
+  <node
+    pkg="lwa4p_pg70"
+    type="camera_pub_mjpeg_streamer.py"
+    name="camera_publisher_node"
+    output="screen"
+  />
+  <node
+    pkg="lwa4p_pg70"
+    type="move_bot.py"
+    name="robot_movement_node"
+    output="screen"
+  />
+  <node
+    pkg="lwa4p_pg70"
+    type="hand_detection_node.py"
+    name="hand_detection_node"
+    output="screen"
+  />
+</launch>

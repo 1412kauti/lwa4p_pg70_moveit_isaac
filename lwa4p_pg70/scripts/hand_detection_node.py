@@ -45,9 +45,9 @@ def hand_detection(frame):
             mpDraw.draw_landmarks(frame, handLMs, mpHands.HAND_CONNECTIONS)
             message = Float32MultiArray()
             message.data = [(x_min + x_max)/2,(y_min + y_max)/2]
-            # message.position.y = (y_min + y_max)/2*0.0044
-            # message.position.z = 0.5165863795721032*0.0000005
-            # message.data = [(x_min + x_max)/2,(y_min + y_max)/2,0.5165863795721032]
+        # message.position.y = (y_min + y_max)/2*0.0044
+        # message.position.z = 0.5165863795721032*0.0000005
+        # message.data = [(x_min + x_max)/2,(y_min + y_max)/2,0.5165863795721032]
             coord_pub.publish(message)
             print("X: "+str(((x_min + x_max)/2)*1))
             print("Y: "+str(((y_min + y_max)/2)*1))
@@ -84,6 +84,7 @@ def recieve_message():
     rospy.init_node('video_subscriber',anonymous=True)
     rospy.Subscriber(topic_name,ImageMsg,image_callback)
     coord_pub = rospy.Publisher('co_ords',Float32MultiArray,queue_size=10)
+    rospy.Rate(0.5).sleep()
     rospy.spin()
     cv2.destroyAllWindows()
     

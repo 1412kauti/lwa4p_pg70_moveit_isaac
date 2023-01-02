@@ -11,23 +11,15 @@ def callback(msg,move_group):
     y_position = msg.data[1]
     # print (str(x_position) , str(y_position))
 
-    horizontal_scale = 0.00105894065
-    vertical_scale = 0.00111786963
+    horizontal_scale = 0.0007166156
+    vertical_scale = -0.00059120782
     waypoints = []
     wpose = move_group.get_current_pose().pose
     
-    if x_position > 640:
-        wpose.position.y += horizontal_scale * x_position  # and sideways (y)
-    else:
-        wpose.position.y -= horizontal_scale * x_position  # and sideways (y)
-    
-    waypoints.append(copy.deepcopy(wpose))
+    wpose.position.y = 0.006018764998501226-horizontal_scale * (x_position-640)  # and sideways (y)    
+    # waypoints.append(copy.deepcopy(wpose))
         
-    if y_position > 360:
-        wpose.position.z += horizontal_scale * y_position  # and upwards (z)
-    else:
-        wpose.position.z -= horizontal_scale * y_position  # and upwards (z)
-
+    wpose.position.z = 0.577137118089646+vertical_scale * (y_position-360)  # and upwards (z)
     waypoints.append(copy.deepcopy(wpose))
     
     (plan, fraction) = move_group.compute_cartesian_path(waypoints, 0.01, 0.0)  
@@ -53,6 +45,7 @@ def move_robot():
     move_group.set_pose_target(pose_goal)
     move_group.go()
     rospy.Subscriber('co_ords',Float32MultiArray,callback,move_group)
+    # rospy.sleep()
     rospy.spin()
     moveit_commander.roscpp_shutdown()
 
