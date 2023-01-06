@@ -160,7 +160,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
-  scripts/camera_pub.py scripts/camera_pub_mjpeg_streamer.py scripts/hand_detection_node.py scripts/moveit.py scripts/move_bot.py scripts/omniverse_sync.py
+  scripts/camera_pub.py scripts/camera_pub_mjpeg_streamer.py scripts/hand_detection_node.py scripts/test_scripts/moveit.py scripts/move_bot.py scripts/omniverse_sync.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
